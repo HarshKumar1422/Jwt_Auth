@@ -1,0 +1,48 @@
+# Server configuration
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+# Spring configuration
+spring:
+  # Database configuration
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+
+  # JPA configuration
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  # H2 console configuration
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        web-allow-others: false
+
+  # Security configuration
+  security:
+    filter:
+      order: 10
+
+# JWT Configuration
+jwt:
+  secret: 5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437
+  expiration: 86400000
+
+# Logging configuration
+logging:
+  level:
+    org.springframework.security: INFO
+    com.example.jwtauthdemo: DEBUG
